@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: quickstart-kb-http
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+    appgw.ingress.kubernetes.io/ssl-redirect: "true"
+    appgw.ingress.kubernetes.io/backend-protocol: "https"
+    appgw.ingress.kubernetes.io/backend-hostname: "quickstart-kb-http"
+    appgw.ingress.kubernetes.io/appgw-trusted-root-certificate: "kb-tls"
+spec:
+  tls:
+    - secretName: frontend-tls
+  rules:
+    - http:
+        paths:
+        - path: /
+          backend:
+            serviceName: quickstart-kb-http
+            servicePort: 5601
