@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: ace-poc-gui-loadbalancer
+  name: ace-gui-poc-loadbalancer
 spec:
   type: LoadBalancer
   selector:
-    app: ace-poc-gui
+    app: ace-gui-poc
   ports:
   - protocol: TCP
     port: 80
